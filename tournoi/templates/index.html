@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+
+<div style="display:flex; flex-wrap:wrap; width:100%">
+
+    {% if user.is_authenticated %}
+
+    {% else %}
+    <div style="display:flex; justify-content:center; width:100%">
+
+    </div>
+    {% endif %}
+    <div style="display:flex; width:100%; justify-content:center; margin-top:2em">
+        <div class="row1" style="width:33%; justify-content:space-between">
+            <div class="bouton_liste">
+
+            </div>
+            <div class="bouton_liste">
+
+            </div>
+
+        </div>
+    </div>
+
+    <div style="display:flex; width:100%; justify-content:center; margin-top: 2em;">
+        <div class="row1" style="width:33%; justify-content:space-between">
+            <div class="bouton_liste">
+
+            </div>
+            <div class="bouton_liste">
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{{ list_tournoi}}
+{% for tournoi in list_tournoi %}
+    {{ tournoi.date }}
+{% endfor %}
+
+{% endblock content %}

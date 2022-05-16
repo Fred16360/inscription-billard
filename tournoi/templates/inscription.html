@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="row titre_inscription">
+    <h1>Calendrier des Tournois 2021/2022 (2,80 m)</h1>
+</div>
+
+<div class="row" style="justify-content:center">
+    <div class="date_tourdejeu">&nbsp;</div>
+    {% for ligue in list_ligue %}
+    <div class="ligue">
+        <div class="nom_ligue">{{ ligue.nom_ligue }}</div>
+        <div class="row">
+            {% for club in list_club %}
+                {% if ligue.id == club.ligue_id %}
+                    <div class="club">{{ club.short_name }}</div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+
+
+
+
+{% for date in list_date %}
+
+<div class="row" style="justify-content:center">
+    <div style="color:white">{{liste_date}}</div>
+        <div class="date_tourdejeu"> {{ date.tournoi_date|date:'d/m/Y' }}</div>
+
+
+
+
+    {% for tourdejeu in list_tourdejeu %}
+        <div>
+            {% if tourdejeu.date|date:'Y-m-d' == date.tournoi_date|date:'Y-m-d'  %}
+                <!-- AFFICHAGE SEULEMENT DES TOURNOIS OU L'ON PEUT S'INSCRIRE -->
+                {% if date.ouverture_date|date:'Y-m-d H:i:s' <= date.today|date:'Y-m-d H:i:s' and date.today|date:'Y-m-d H:i:s' <= date.fermeture_date|date:'Y-m-d H:i:s' %}
+                    {% if tourdejeu.mode_jeu.id == 1 %}
+                        <div class="tourdejeu" style="background-color: #{{ tourdejeu.mode_jeu.color }}"> </div>
+                    {% else %}
+                        <a class="lien" href="#" onclick="javascript:popup('{% url 'list_joueur' tourdejeu.id %}','list_joueur',500,500)"
+                            onmouseover="over_color({{ tourdejeu.id }})" onmouseout="out_color({{ tourdejeu.id }})">
+                        <div id="{{ tourdejeu.id }}" class="tourdejeu" style="background-color: #{{ tourdejeu.mode_jeu.color }}">
+                            <div>Tour N° {{ tourdejeu.tour_nbr }}</div>
+                            <div>{{ tourdejeu.mode_jeu }}</div>
+                            {{ date_ouverture|date:'Y-m-d H:i' }}
+                            <div>{{ tourdejeu.nbr_maxi_joueur }} joueurs</div>
+                            <div style="font-size: 10px">{{ tourdejeu.nbr_inscrit }} 
+                                {% if tourdejeu.nbr_inscrit < 2 %} inscrit{% else %} inscrits{% endif %}                 
+                            </div>
+                            <div style="font-size: 9px">{{ tourdejeu.nbr_inscrit_att }}
+                                {% if tourdejeu.nbr_inscrit_att < 2 %} inscrit{% else %} inscrits{% endif %}
+                            en attente</div>
+                        </div>
+                        </a>
+                    {% endif %}
+                {% else %}
+                    <!-- AFFICHAGE DES TOURNOIS OU L'ON NE PEUT PAS S'INSCRIRE -->
+                    {% if tourdejeu.mode_jeu.id == 1 %}
+                        <div class="tourdejeu" style="background-color: #e9e9e9"> </div>
+                    {% else %}
+                        <div>
+                        <div id="{{ tourdejeu.id }}" class="tourdejeu" style="background-color: #cccccc">
+                            <div>Tour N° {{ tourdejeu.tour_nbr }}</div>
+                            <div>{{ tourdejeu.mode_jeu }}</div>
+                            {{ date_ouverture|date:'Y-m-d H:i' }}
+                            <div>{{ tourdejeu.nbr_maxi_joueur }} joueurs</div>
+                            <div style="font-size: 10px">{{ tourdejeu.nbr_inscrit }} 
+                                {% if tourdejeu.nbr_inscrit < 2 %} inscrit{% else %} inscrits{% endif %}                 
+                            </div>
+                            <div style="font-size: 9px">{{ tourdejeu.nbr_inscrit_att }}
+                                {% if tourdejeu.nbr_inscrit_att < 2 %} inscrit{% else %} inscrits{% endif %}
+                            en attente</div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {%endif %}
+            {% endif %}
+        </div>
+    {% endfor %}
+
+
+
+</div>
+{% endfor %}
+
+{% endblock content %}

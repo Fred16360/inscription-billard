@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="row titre_inscription">
+    <h1>Foire Aux Questions</h1>
+</div>
+
+<div class="row" style="justify-content:center">
+
+    <div style="width:50%; background-color: white; padding:10px; font-size: 14px">
+        <div class="question">
+            <p><a href="#creer_compte">Comment créer un compte ?</a></p>
+            <p><a href="#connecter_compte">Comment se connecter à son compte ?</a></p>
+            <p><a href="inscription_tournoi">Comment s'inscrire à un tournoi ?</a></p>
+            <p><a href="#desinscription_tournoi">Comment se désinscrire d'un tournoi ?</a></p>
+            <p><a href="#quand_inscrire_tournoi">Quand peut-on s'inscrire à un tournoi ?</a></p>
+        </div>
+
+        <div id="creer_compte" class="reponse">
+            <p class="titre">Comment créer un compte ?</p>
+            <ul class="li_faq">
+                <li>Cliquez sur les 3 barres en haut à gauche de la page</li>
+                <li>Après que le menu soit ouvert, cliquez sur "Créer un compte"</li>
+                <li>Remplissez tous les champs et cliquez sur "Valider"</li>
+            </ul>
+        </div>
+
+        <div id="connecter_compte" class="reponse">
+            <p class="titre">Comment se connecter à son compte ?</p>
+            <ul class="li_faq">
+                <li>Cliquez sur les 3 barres en haut à gauche de la page</li>
+                <li>Après que le menu soit ouvert, cliquez sur "Connexion"</li>
+                <li>Saisissez l'email que vous avez mis lors de la création de votre compte</li>
+                <li>Saisissez votre mot de passe</li>
+                <li>Cliquez sur "Se connecter". S'il n'y a pas d'erreur, vous serez redirigé sur la page "inscription"
+                </li>
+            </ul>
+        </div>
+
+        <div id="inscription_tournoi" class="reponse">
+            <p class="titre">Comment s'inscrire à un tournoi ?</p>
+            Seules les cases où vous pouvez vous incrire sont en couleur.
+            <ul class="li_faq">
+                <li>Sur la page d'accueil "Calendrier des tournois", cliquez sur la case du tournoi où vous voulez vous
+                    inscrire.</li>
+                <li>Une fenêtre va s'ouvrir :
+                    <ul class="li_faq">
+                        <li>soit vous n'êtes pas connecté et vous devrez vous identifiez avant de vous inscrire</li>
+                        <li>soit vous êtes identifiez et vous n'aurez qu'à cliquez sur "oui" pour vous inscrire</li>
+                    </ul>
+                </li>
+            </ul>
+            <br>
+            Une fois inscrit à un tournoi, vous ne pourrez que vous inscrire sur la liste d'attente d'un autre tournoi.<br>
+            Les autres cases grises sont des tournois passés ou des tournois à venir mais où vous ne pouvez pas encore
+            vous inscrire.<br>
+            Pour savoir, quand vous pouvez vous inscrire voir <a href="#quand_inscrire_tournoi">"Quand peut-on
+                s'inscrire à un tournoi ?"</a>
+
+        </div>
+
+        <div id="desinscription_tournoi" class="reponse">
+            <p class="titre">Comment se désinscrire à un tournoi ?</p>
+            Seules les cases où vous pouvez vous désincrire sont en couleur.
+            <ul class="li_faq">
+                <li>Sur la page d'accueil "Calendrier des tournois", cliquez sur la case du tournoi où vous voulez vous
+                    désinscrire.</li>
+                <li>Une fenêtre va s'ouvrir :
+                    <ul class="li_faq">
+                        <li>soit vous n'êtes pas connecté et vous devrez vous identifiez avant de vous désinscrire</li>
+                        <li>soit vous êtes identifiez et vous n'aurez qu'à cliquez sur "oui" pour vous désinscrire</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div id="quand_inscrire_tournoi" class="reponse">
+            <p class="titre">Quand peut-on s'inscrire à un tournoi ?</p>
+            Les inscriptions sont ouvertes le vendredi à 18h00, 3 semaines avant la date du tournoi.
+            <br><br>
+            <div style="font-weight: bold; text-decoration:underline">Exemple :<br></div>
+            Date du tournoi : dimmanche 28 Novembre<br>
+            Ouververture des inscriptions : vendredi 5 Novembre à 18h00<br>
+            Fermeture des inscriptions : vendredi 19 Novembre à 18h00<br>
+        </div>
+
+    </div>
+
+</div>
+
+
+{% endblock content %}

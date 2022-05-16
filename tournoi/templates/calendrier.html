@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="row titre_inscription">
+    <h1>Calendrier général des Tournois</h1>
+</div>
+
+<div class="row" style="justify-content:center">
+    <div class="date_tourdejeu"></div>
+    {% for ligue in list_ligue %}
+    <div class="ligue">{{ ligue.nom_ligue }}
+        <div class="row">
+            {% for club in list_club %}
+            {% if ligue.id == club.ligue_id %}
+            <div class="club">{{ club.short_name }}</div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% for date in list_date %}
+<div class="row" style="justify-content:center">
+
+    <div class="date_tourdejeu"> {{ date.tournoi_date|date:'d/m/Y' }}</div>
+
+    {% for tourdejeu in list_tourdejeu %}
+    <div>
+        {% if tourdejeu.date|date:'Y-m-d' == date.tournoi_date|date:'Y-m-d'  %}
+
+        {% if tourdejeu.mode_jeu.id == 1 %}
+        <div id="{{ tourdejeu.id }}" class="tourdejeu" style="background-color: #{{ tourdejeu.mode_jeu.color }}"> </div>
+        {% else %}
+        <div id="{{ tourdejeu.id }}" class="tourdejeu" style="background-color: #{{ tourdejeu.mode_jeu.color }}">
+            <div>Tour N° {{ tourdejeu.tour_nbr }}</div>
+            <div>{{ tourdejeu.mode_jeu }}</div>
+            <div>{{ tourdejeu.nbr_maxi_joueur }} joueurs</div>
+        </div>
+        {% endif %}
+
+        {% endif %}
+    </div>
+    {% endfor %}
+
+</div>
+{% endfor %}
+
+{% endblock content %}

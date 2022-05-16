@@ -1,0 +1,38 @@
+{% load static %}
+
+<!--templates/popup.html-->
+<!doctype html>
+<html lang="fr" class="popup_background">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jquery.css' %}">
+
+    <title> Tournoi de Billard</title>
+
+</head>
+
+<!-- window.opener.location.reload() : recharge la page parente
+     window.close() : ferme la popup -->
+
+<body onunload="window.opener.location.reload(); window.close();" style="overflow-x : hidden;">
+
+    {% block content %}
+
+    {% endblock content %}
+
+    <footer></footer>
+    
+
+    <script src="{% static 'js/script.js' %}" async></script>
+    <script src="{% static 'js/jquery-3.6.0.slim.min.js' %}"></script>
+    <script src="{% static '/js/jquery-ui.min.js' %}"></script>
+
+</body>
+
+</html>

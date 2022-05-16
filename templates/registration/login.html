@@ -1,0 +1,46 @@
+<!--templates/registration/login.html-->
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="col">
+  <div class="row" style="justify-content:center">
+    <h1>Connexion</h1>
+  </div>
+  <div class="row" style="justify-content:center">
+    <div class="col">
+      <div class="connexion">
+        <div class="row" style="margin-bottom:15px">
+          <h2>Identifiez-vous</h2>
+        </div>
+        <form method="post">
+          {% csrf_token %}
+          <input type="hidden" name="next" value="{{ next }}">
+          <label for="username">{{ form.username.label }}*</label>
+          {{ form.username }}
+          <label for="password">{{ form.password.label }}*</label>
+          {{ form.password }}
+          <div class="div_submit" style="justify-content:start">
+            <input type="submit" value="Se connecter">
+          </div>
+        </form>
+      </div>
+      <div class="row connexion_footer">
+        <div class="col">
+          <div class="row">
+            Mot de passe oublié ?
+            <a href="{% url 'password_reset' %}">Cliquez ici</a>
+          </div>
+          <div class="row" style="padding: 0px 10px">
+            Pas de compte ? <a href="{% url 'register' %}?next={{ next }}">Créer
+              un compte</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

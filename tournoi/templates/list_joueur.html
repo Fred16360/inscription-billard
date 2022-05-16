@@ -1,0 +1,81 @@
+{% extends 'popup.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="col list-inscrit">
+
+    {% if list_joueur.count != 0 %}
+    <div class="row titre">Liste des joueurs inscrits</div>
+    {% endif %}
+    <div class="col content">
+        {% for joueur in list_joueur %}
+        <div class="row" style="border-bottom: 1px solid black">
+            <div class="nom">{{ joueur.joueur_id.name }} {{ joueur.joueur_id.firstname }}</div>
+            <div class="date">{{ joueur.date|date:'d/m/Y H:i:s' }}</div>
+        </div>
+        {% endfor %}
+    </div>
+
+    {% if list_joueur_att.count != 0 %}
+    <div class="row titre">Liste des joueurs en attente</div>
+    {% endif %}
+    
+    <div class="col content">
+        {% for joueur_att in list_joueur_att %}
+        <div class="row" style="border-bottom: 1px solid black">
+            <div class="nom">{{ joueur_att.joueur_id.name }} {{ joueur_att.joueur_id.firstname }}</div>
+            <div class="date">{{ joueur_att.date|date:'d/m/Y H:i:s' }}</div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="col inscription">
+        {% if inscrit == 0 and nbr_inscrit < nbr_joueur and inscrit_day_att == 0 %}
+        <div class="row">
+            <div class="question">Voulez-vous vous inscrire ?</div>
+            <div class="reponse">
+                <a href="{% url 'inscription_create' ref_pk %}">
+                    <button class="btn btn-primary">OUI</button>
+                </a>
+            </div>
+        </div>
+        {% endif %}
+        {% if inscrit_day == 1 %}
+        <div class="row">
+            <div class="question">Voulez-vous vous désinscrire ?</div>
+            <div class="reponse">
+                <a href="{% url 'desinscription' ref_pk %}">
+                    <button class="btn btn-primary">OUI</button>
+                </a>
+            </div>
+        </div>
+        {% endif %}
+        {% if inscrit_att == 0  and inscrit_day == 0 %}
+        <div class="row">
+            <div class="question">Voulez-vous vous inscrire sur liste d'attente ?</div>
+            <div class="reponse">
+                <a href="{% url 'inscription_att_create' ref_pk %}">
+                    <button class="btn btn-primary">OUI</button>
+                </a>
+            </div>
+        </div>
+        {% endif %}
+        {% if inscrit_day_att == 1 %}
+        <div class="row">
+            <div class="question">Voulez-vous vous désinscrire de la liste d'attente ?</div>
+            <div class="reponse">
+                <a href="{% url 'desinscription_att' ref_pk %}">
+                    <button class="btn btn-primary">OUI</button>
+                </a>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+
+
+
+
+{% endblock content %}
