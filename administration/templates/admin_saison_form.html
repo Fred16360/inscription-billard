@@ -1,0 +1,68 @@
+{% extends 'admin_base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="row titre_inscription">
+    {% if create == 1 %}
+    <h1>Création d'une nouvelle saison</h1>
+    {% else %}
+    <h1>Modifier la saison</h1>
+    {% endif %}
+</div>
+
+<div class="row" style="justify-content:center">
+    <div class="col form-content" style="width:23%">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col ">
+                <div class="row">
+                    <div class="form-label">
+                        <label>{{ form.nom_saison.label }}</label>
+                    </div>
+                    <div>
+                        {{ form.nom_saison }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-label">
+                        <label>{{ form.date_debut.label }}</label>
+                    </div>
+                    <div class="row" style="width:46%">
+                        {{ form.date_debut }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-label">
+                        <label>{{ form.date_fin.label }}</label>
+                    </div>
+                    <div class="row" style="width:46%">
+                        {{ form.date_fin }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-label">
+                        <label>{{ form.default.label }}</label>
+                    </div>
+                    <div>
+                        {{ form.default }}
+                    </div>
+                </div>
+            
+            <div class="div_submit" style="margin-top:15px">
+                {% if create == 1 %}
+                <input type="submit" style="width:150px" value="Créer une saison" />
+                {% else %}
+                <input type="submit" style="width:150px" value="Modifier une saison" />
+                {% endif %}
+                <a href="{% url 'admin_saison_list' %}">
+                    <input type="cancel" value="Annuler" />
+                </a>
+            </div>
+        </div>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}

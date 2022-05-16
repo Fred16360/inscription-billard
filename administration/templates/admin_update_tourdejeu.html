@@ -1,0 +1,70 @@
+{% extends 'popup.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="col">
+    <div class="row" style="justify-content:center">
+        <h1>Création Tournoi</h1>
+    </div>
+    <div class="row" style="justify-content:center">
+
+        <div class="tournoi" style="border-radius: 5px">
+
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="col ">
+                    <div class="row">
+                        <div class="form-label">
+                            <label>{{ form.tour_nbr.label }}</label>
+                        </div>
+                        <div>
+                            {{ form.tour_nbr }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-label">
+                            <label>{{ form.lieu_organisation.label }}</label>
+                        </div>
+                        <div>
+                            {{ form.lieu_organisation }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-label">
+                            <label>{{ form.mode_jeu.label }}</label>
+                        </div>
+                        <div>
+                            {{ form.mode_jeu }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-label">
+                            <label>{{ form.nbr_maxi_joueur.label }}</label>
+                        </div>
+                        <div>
+                            {{ form.nbr_maxi_joueur }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-label">
+                            <label>{{ form.date.label }}</label>
+                        </div>
+                        <div>
+                            {{ form.date }}
+                        </div>
+                    </div>
+
+                    <div class="div_submit" style="margin-top:15px">
+                        <input type="submit" value="Ajouter" />
+                        <a href="#" onclick="window.close();">
+                            <input type="cancel" value="Annuler" />
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

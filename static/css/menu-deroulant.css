@@ -1,0 +1,71 @@
+/* CSS MENU DEROULANT */
+nav {
+    width: 100%;
+    margin: 0 auto;
+    background-color: #0042ff;
+    position: sticky;
+    top: 0px;
+    padding: 1em;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+}
+
+nav ul li {
+    flex: 1 1 auto;
+    text-align: center;
+    position: relative;
+}
+
+nav a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    border-bottom: 4px solid transparent;
+    padding: 10px 0px;
+}
+
+nav a:hover {
+    color: gold;
+    border-bottom: 4px solid gold;
+}
+
+.sous {
+    display: none;
+    box-shadow: 0px 1px 2px #CCC;
+    background-color: #eeeeee;
+    position: absolute;
+    width: 100%;
+    z-index: 100;
+}
+
+nav>ul li:hover .sous {
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.sous li {
+    flex: 1 1 auto;
+    text-align: left;
+}
+
+.sous a {
+    padding: 10px;
+    border-bottom: none;
+    color: black;
+}
+
+.sous a:hover {
+    border-bottom: none;
+    background-color: RGBa(200, 200, 200, 0.5);
+    color: #0014c5;
+}
+
+.deroulant>a::after {
+    content: " ▼";
+    font-size: 12px;
+}
+
+/* FIN MENU DEROULANT */

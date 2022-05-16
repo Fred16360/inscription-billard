@@ -1,0 +1,44 @@
+{% extends 'admin_base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="row titre_inscription">
+    <h1>Liste des saisons</h1>
+</div>
+
+<div class="row" style="justify-content:center">
+    <div class="col" style="width:30%">
+
+        <div class="row" style="margin-bottom:10px">
+            <a href="{% url 'admin_saison_create' %}">
+                <button class="btn btn-primary">Ajouter une saison</button>
+            </a>
+        </div>
+
+        <div class="row entete">
+            <div class="titre" style="width:30%">Nom de la saison</div>
+            <div class="titre" style="width:30%">Date de début</div>
+            <div class="titre" style="width:30%">Date de fin</div>
+            <div class="titre" style="width:10%">Défaut</div>
+        </div>
+
+        <div class="col">
+            {% for saison in saison_list %}
+            <div class="row contenu">
+                <a href="{% url 'admin_saison_update' saison.id %}"class="titre" style="width:30%">{{ saison.nom_saison }}
+            
+                </a>
+            <div class="titre" style="width:30%">{{ saison.date_debut }}</div>
+            <div class="titre" style="width:30%">{{ saison.date_fin }}</div>
+            <div class="titre" style="width:10%">{{ saison.default }}</div>
+            </div>
+
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+
+{% endblock content %}
